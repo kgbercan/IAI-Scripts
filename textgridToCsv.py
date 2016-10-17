@@ -8,15 +8,19 @@ itemTier = re.compile("item \[\d\]:")
 tierClass = re.compile("class = \"(\w+)Tier\"")
 tierName = re.compile("name = \"(\w+)\"")
 boundary = re.compile("(intervals|points) \[\d\]:")
+points = re.compile("(xm(in|ax)|number) = (\d+(\.\d+)?)")
+content = re.compile("(text|mark) = \"(.*)\"")
 
 currentTierType = ""
 currentTierName = ""
 
 #put textgrid in list
 lines = textgrid1.readlines()
+
 #line by line
 for i in range(len(lines)):
 	current = lines[i]
+
 	#if the line declares a new tier
 	if(itemTier.search(current)):
 		#move to next line
@@ -31,14 +35,28 @@ for i in range(len(lines)):
 		current = lines[i]
 		#set the current tier name
 		currentTierName = tierName.search(current).group(1).lower()
+
 	#if intervals or points
 	if(boundary.search(current)):
 		#move to next line
-		#get min
+		i=i+1
+		current = lines[i]
+		#get min/single point
+		print(points.search(current).group(1) + ": " + points.search(current).group(3))
+
+		#if interval 
+		if(currentTierType=="interval"):
+			#move to next line
+			i=i+1
+			current = lines[i]
+			#get max
+			print(points.search(current).group(1) + ": " + points.search(current).group(3))
+		
 		#move to next line
-		#get max
-		#move to next line
+		i=i+1
+		current = lines[i]
 		#get text
+		print(content.search(current).group(1) + ": " + content.search(current).group(2))
 
 
 
