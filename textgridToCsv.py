@@ -13,14 +13,11 @@ def lineUpTiers(tier,xmax):
 				linedUp.append(t[1])
 			else:
 				linedUp[i]+=" " + t[1]
+	while(len(linedUp)<len(xmax)):
+		linedUp.append("")
 	return(linedUp)
 
 def main():
-	##### open textgrid #####
-	textgrid1 = open("karina_f2bcprlp1.TextGrid")
-	print(".TextGrid to be read: " + textgrid1.name)
-	#################
-
 	##### regexes #####
 	itemTier = re.compile("item \[\d+\]:")
 	tierClass = re.compile("class = \"(\w+)Tier\"")
@@ -42,14 +39,16 @@ def main():
 	misc = []
 	########################
 
+	##### open and read textgrid #####
+	textgrid1 = open("karina_f2bcprlp1.TextGrid")
+	print(".TextGrid to be read: " + textgrid1.name)
 
-	##### read .TextGrid #####
-
-	#put textgrid in list
 	lines = textgrid1.readlines()
 	textgrid1.close()
 	print(".TextGrid closed: " + str(textgrid1.closed))
+	##################################
 
+	#put textgrid in list
 	#line by line
 	for i in range(len(lines)):
 		current = lines[i]
@@ -106,42 +105,24 @@ def main():
 			elif(currentTierName=="misc"):
 				misc.append((point,text))
 
-	ntones = lineUpTiers(tones,xmax)
+	tones = lineUpTiers(tones,xmax)
 	breaks = lineUpTiers(breaks,xmax)
 	misc = lineUpTiers(misc,xmax)
 
-	print("\nTONES: ")
-	print(ntones)
-	print("\nBREAKS: ")
-	print(breaks)
-	print("\nMISC: ")
-	print(misc)
-
 	##### create 2-d array to hold textgrid #####
-	table = [["xmin","xmax","words"]]
+	table = [["xmin","xmax","words","tones","breaks","misc"]]
 	for i in range(len(xmin)):
 		table.append([xmin[i],xmax[i],words[i],tones[i],breaks[i],misc[i]])
 	for i in range(15):
 		print(table[i])
 	#############################################
 
-	##### create 2-d array to hold textgrid #####
-	table = [["xmin","xmax","words"]]
-	for i in range(len(xmin)):
-		table.append([xmin[i],xmax[i],words[i],tonesLinedUp[i]])
-	for i in range(102):
-		print(table[i])
-	#############################################
-
-	##### open .CSV #####
+	##### write to .CSV #####
 	#labelsCSV =  open("melnicoveLabels.csv","a")
 	with open("test.csv", "w", newline="") as testCSV:
 		print("\n.csv opened for: " + testCSV.mode)
 		writer = csv.writer(testCSV)
 		writer.writerows(table)
-	#####################
-
-	print("\n\n")
-
+	#########################
 
 main()
