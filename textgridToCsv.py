@@ -1,31 +1,22 @@
 import re
 import csv
 
-
-def lineUpTiersWithWords(tier, xmax):
-	newList = []
-	i = 0
-	for markup in tier:
-		if((float(markup[0])-.05)<float(xmax[len(newList)])):
-			newList.append(markup[1])
-		else:
-			newList.append("")
-	return(newList)
-
 def main():
+	##### open textgrid #####
 	textgrid1 = open("karina_f2bcprlp1.TextGrid")
 	print(".TextGrid to be read: " + textgrid1.name)
-	labelsCSV =  open("melnicoveLabels.csv","a")
-	print(".csv opened for: " + labelsCSV.mode)
+	#################
 
-	#regexes
+	##### regexes #####
 	itemTier = re.compile("item \[\d+\]:")
 	tierClass = re.compile("class = \"(\w+)Tier\"")
 	tierName = re.compile("name = \"(\w+)\"")
 	boundary = re.compile("(intervals|points) \[\d+\]:")
 	points = re.compile("(xm(in|ax)|number) = (\d+(\.\d+)?)")
 	content = re.compile("(text|mark) = \"(.*)\"")
+	###################
 
+	##### initializers #####
 	currentTierType = ""
 	currentTierName = ""
 
@@ -35,9 +26,15 @@ def main():
 	tones = []
 	breaks = []
 	misc = []
+	########################
+
+
+	##### read .TextGrid #####
 
 	#put textgrid in list
 	lines = textgrid1.readlines()
+	textgrid1.close()
+	print(".TextGrid closed: " + str(textgrid1.closed))
 
 	#line by line
 	for i in range(len(lines)):
@@ -49,6 +46,7 @@ def main():
 			i+=1
 			current = lines[i]
 			currentTierType = tierClass.search(current).group(1).lower()
+
 			#move to next line, the name line
 			i+=1
 			current = lines[i]
@@ -59,7 +57,7 @@ def main():
 			#move to next line
 			i=i+1
 			current = lines[i]
-			#get min/single point
+			#get minimum/single point
 			pointType = points.search(current).group(1)
 			point = points.search(current).group(3)
 			print(pointType + ": " + point)
@@ -97,17 +95,31 @@ def main():
 			elif(currentTierName=="misc"):
 				misc.append((point,text))
 
-	tones = lineUpTiersWithWords(tones,xmax)
+	# print("\n XMIN: ")
+	# print(xmin)
+	# print("\n XMAX: ")
+	# print(xmax)
+	# print("\n WORDS: ")
+	# print(words)
+	print("\n TONES: ")
 	print(tones)
-	breaks = lineUpTiersWithWords(breaks,xmax)
-	print(breaks)
-	misc = lineUpTiersWithWords(misc,xmax)
 
+	##### create 2-d array to hold textgrid #####
+	table = [["xmin","xmax","words"]]
+	for i in range(len(xmin)):
+		table.append([xmin[i],xmax[i],words[i]])
+	for i in range(len(table)):
+		print(table[i])
+	#############################################
 
-	textgrid1.close()
-	print(".TextGrid closed: " + str(textgrid1.closed))
-	labelsCSV.close()
-	print(".csv closed: " + str(labelsCSV.closed))
+	##### open .CSV #####
+	#labelsCSV =  open("melnicoveLabels.csv","a")
+	with open("test.csv", "w", newline="") as testCSV:
+		print("\n.csv opened for: " + testCSV.mode)
+		writer = csv.writer(testCSV)
+		writer.writerows(table)
+	#####################
+
 	print("\n\n")
 
 
