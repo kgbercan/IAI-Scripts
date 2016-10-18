@@ -111,7 +111,7 @@ def main():
 		print(t)
 		print("LINEDUP: ")
 		print(tonesLinedUp)
-		while(float(t[0])>float(xmax[i])):
+		while(float(t[0])>float(xmax[i]) and i<len(xmax)-1):
 			tonesLinedUp.append("")
 			i+=1
 			print(str(i) + " " + xmax[i])
