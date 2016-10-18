@@ -104,11 +104,34 @@ def main():
 	print("\n TONES: ")
 	print(tones)
 
+	tonesLinedUp = []
+	i = 0
+	for t in tones:
+		print("\n CURRENT TONE: ")
+		print(t)
+		print("LINEDUP: ")
+		print(tonesLinedUp)
+		if(float(t[0])<=float(xmax[i])):
+			if(len(tonesLinedUp)==i):
+				tonesLinedUp.append(t[1])
+			else:
+				tonesLinedUp[i]+=" " + t[1]
+		else:
+			i+=1
+	print(tonesLinedUp)
+
+	# if tones[t][0] <= xmax[x]:
+	#	tonesLinedUp.append(tones[t][0])
+	# else:
+	# 	tonesLinedUp.append("")
+
 	##### create 2-d array to hold textgrid #####
-	table = [["xmin","xmax","words"]]
+	# table = [["xmin","xmax","words"]]
+	table = []
 	for i in range(len(xmin)):
 		table.append([xmin[i],xmax[i],words[i]])
-	for i in range(len(table)):
+	for i in range(10):
+		print(tones[i])
 		print(table[i])
 	#############################################
 
