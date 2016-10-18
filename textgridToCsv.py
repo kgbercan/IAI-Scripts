@@ -55,7 +55,7 @@ def main():
 		#if intervals or points
 		if(boundary.search(current)):
 			#move to next line
-			i=i+1
+			i+=1
 			current = lines[i]
 			#get minimum/single point
 			pointType = points.search(current).group(1)
@@ -67,18 +67,18 @@ def main():
 				xmin.append(point)
 
 				#move to next line
-				i=i+1
+				i+=1
 				current = lines[i]
 				#get max
 				pointType = points.search(current).group(1)
 				point = points.search(current).group(3)
-				print(pointType + ": " + point)
+				print(pointType.upper() + ": " + point)
 
 				#store xmax
 				xmax.append(point)
 			
 			#move to next line
-			i=i+1
+			i+=1
 			current = lines[i]
 			#get text
 			contentType = content.search(current).group(1)
@@ -111,13 +111,16 @@ def main():
 		print(t)
 		print("LINEDUP: ")
 		print(tonesLinedUp)
+		while(float(t[0])>float(xmax[i])):
+			tonesLinedUp.append("")
+			i+=1
+			print(str(i) + " " + xmax[i])
 		if(float(t[0])<=float(xmax[i])):
+			print(str(i) + " " + xmax[i])
 			if(len(tonesLinedUp)==i):
 				tonesLinedUp.append(t[1])
 			else:
 				tonesLinedUp[i]+=" " + t[1]
-		else:
-			i+=1
 	print(tonesLinedUp)
 
 	# if tones[t][0] <= xmax[x]:
