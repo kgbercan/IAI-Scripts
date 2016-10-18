@@ -1,6 +1,20 @@
 import re
 import csv
 
+def lineUpTiers(tier,xmax):
+	linedUp = []
+	i = 0
+	for t in tier:
+		while((float(t[0])-.03)>float(xmax[i]) and i<len(xmax)-1):
+			linedUp.append("")
+			i+=1
+		if(float(t[0])-.03<=float(xmax[i])):
+			if(len(linedUp)==i):
+				linedUp.append(t[1])
+			else:
+				linedUp[i]+=" " + t[1]
+	return(linedUp)
+
 def main():
 	##### open textgrid #####
 	textgrid1 = open("karina_f2bcprlp1.TextGrid")
@@ -60,7 +74,6 @@ def main():
 			#get minimum/single point
 			pointType = points.search(current).group(1)
 			point = points.search(current).group(3)
-			print(pointType + ": " + point)
 
 			if(currentTierType=="interval"):
 				#store xmin
@@ -72,7 +85,6 @@ def main():
 				#get max
 				pointType = points.search(current).group(1)
 				point = points.search(current).group(3)
-				print(pointType.upper() + ": " + point)
 
 				#store xmax
 				xmax.append(point)
@@ -83,7 +95,6 @@ def main():
 			#get text
 			contentType = content.search(current).group(1)
 			text = content.search(current).group(2)
-			print(contentType + ": " + text)
 
 			#add word, tone, break or misc to csv
 			if(currentTierName=="words"):
@@ -95,46 +106,30 @@ def main():
 			elif(currentTierName=="misc"):
 				misc.append((point,text))
 
-	# print("\n XMIN: ")
-	# print(xmin)
-	# print("\n XMAX: ")
-	# print(xmax)
-	# print("\n WORDS: ")
-	# print(words)
-	print("\n TONES: ")
-	print(tones)
+	ntones = lineUpTiers(tones,xmax)
+	breaks = lineUpTiers(breaks,xmax)
+	misc = lineUpTiers(misc,xmax)
 
-	tonesLinedUp = []
-	i = 0
-	for t in tones:
-		print("\n CURRENT TONE: ")
-		print(t)
-		print("LINEDUP: ")
-		print(tonesLinedUp)
-		while(float(t[0])>float(xmax[i]) and i<len(xmax)-1):
-			tonesLinedUp.append("")
-			i+=1
-			print(str(i) + " " + xmax[i])
-		if(float(t[0])<=float(xmax[i])):
-			print(str(i) + " " + xmax[i])
-			if(len(tonesLinedUp)==i):
-				tonesLinedUp.append(t[1])
-			else:
-				tonesLinedUp[i]+=" " + t[1]
-	print(tonesLinedUp)
-
-	# if tones[t][0] <= xmax[x]:
-	#	tonesLinedUp.append(tones[t][0])
-	# else:
-	# 	tonesLinedUp.append("")
+	print("\nTONES: ")
+	print(ntones)
+	print("\nBREAKS: ")
+	print(breaks)
+	print("\nMISC: ")
+	print(misc)
 
 	##### create 2-d array to hold textgrid #####
-	# table = [["xmin","xmax","words"]]
-	table = []
+	table = [["xmin","xmax","words"]]
 	for i in range(len(xmin)):
-		table.append([xmin[i],xmax[i],words[i]])
-	for i in range(10):
-		print(tones[i])
+		table.append([xmin[i],xmax[i],words[i],tones[i],breaks[i],misc[i]])
+	for i in range(15):
+		print(table[i])
+	#############################################
+
+	##### create 2-d array to hold textgrid #####
+	table = [["xmin","xmax","words"]]
+	for i in range(len(xmin)):
+		table.append([xmin[i],xmax[i],words[i],tonesLinedUp[i]])
+	for i in range(102):
 		print(table[i])
 	#############################################
 
