@@ -134,6 +134,7 @@ def main():
 		table[0][breakIndex] = tg[tgIndex].name[:3] + "Breaks"
 		table[0][miscIndex] = tg[tgIndex].name[:3] + "Misc"
 
+		#if its the first textgrid, that's the words, xmins, and xmaxs we will use
 		if(tgIndex==1):
 			for i in range(len(tg[1].xmin)):
 				table.append([])
@@ -146,6 +147,7 @@ def main():
 					elif(j==2):
 						table[i+1][j] = tg[1].words[i]
 
+		#now fill in the annotations
 		#for each row
 		for i in range(len(tg[1].xmin)):
 			#for each column
