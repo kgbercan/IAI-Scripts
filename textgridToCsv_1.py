@@ -46,8 +46,13 @@ def main():
 	###################
 
 	##### walk through each .TextGrid #####
+
+	#column names for final spreadsheet
+	col = []
+
+	#skip the first one bc that's the script, not a textgrid
 	for tgIndex in range(1,len(tg)):
-		
+
 		print("\ntextgrid #" + str(tgIndex) + ": ")
 		print(tg[tgIndex].name + "\n")
 
@@ -115,12 +120,22 @@ def main():
 		tg[tgIndex].breaks = lineUpTiers(tg[tgIndex].breaks,tg[tgIndex].xmax)
 		tg[tgIndex].misc = lineUpTiers(tg[tgIndex].misc,tg[tgIndex].xmax)
 
+		#create column names
+		if(tgIndex==1):
+			col.append("xmin")
+			col.append("xmax")
+			col.append("words")
+		col.append(tg[tgIndex].name[:3] + "tones")
+		col.append(tg[tgIndex].name[:3] + "breaks")
+		col.append(tg[tgIndex].name[:3] + "misc")
 	#######################################
 
-	# ##### create 2-d array to hold textgrid #####
-	# table = [["xmin","xmax","words","tones","breaks","misc"]]
-	# for i in range(len(xmin)):
-	# 	table.append([xmin[i],xmax[i],words[i],tones[i],breaks[i],misc[i]])
+
+	##### create 2-d array to hold textgrid #####
+	table = [col]
+
+	for i in range(len(xmin)):
+		table.append([xmin[i],xmax[i],words[i],tones[i],breaks[i],misc[i]])
 	# for i in range(15):
 	# 	print(table[i])
 
