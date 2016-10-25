@@ -32,15 +32,16 @@ def main():
 
 	##### arguments #####
 	#column names for final spreadsheet
-	col = ["xmin","xmax","words"]
+	table = [["xmin","xmax","words"]]
 	tg = []
 
 	for textFile in argv:
 		tg.append(TextGrid(textFile))
 		if(len(tg)!=1):
-			col.append("")
-			col.append("")
-			col.append("")
+			table[0].append("")
+			table[0].append("")
+			table[0].append("")
+
 	#####################
 
 	##### regexes #####
@@ -53,8 +54,6 @@ def main():
 	###################
 
 	##### walk through each .TextGrid #####
-
-
 	#skip the first one bc that's the script, not a textgrid
 	for tgIndex in range(1,len(tg)):
 
@@ -121,28 +120,48 @@ def main():
 					elif(currentTierName=="misc"):
 						tg[tgIndex].misc.append((point,text))
 
-		tg[tgIndex].tones = lineUpTiers(tg[tgIndex].tones,tg[tgIndex].xmax)
-		tg[tgIndex].breaks = lineUpTiers(tg[tgIndex].breaks,tg[tgIndex].xmax)
-		tg[tgIndex].misc = lineUpTiers(tg[tgIndex].misc,tg[tgIndex].xmax)
+		tg[tgIndex].tones = lineUpTiers(tg[tgIndex].tones,tg[1].xmax)
+		tg[tgIndex].breaks = lineUpTiers(tg[tgIndex].breaks,tg[1].xmax)
+		tg[tgIndex].misc = lineUpTiers(tg[tgIndex].misc,tg[1].xmax)
 
-		#create column names
+		### create column names
+		#columns that already exist are xmin, xmax, and words
+		#so the base number is 2 and we increment by the number of files there are
 		toneIndex = 2 + tgIndex
 		breakIndex = toneIndex + len(tg)-1
 		miscIndex = breakIndex + len(tg)-1
-		col[toneIndex] = tg[tgIndex].name[:3] + "Tones"
-		col[breakIndex] = tg[tgIndex].name[:3] + "Breaks"
-		col[miscIndex] = tg[tgIndex].name[:3] + "Misc"
+		table[0][toneIndex] = tg[tgIndex].name[:3] + "Tones"
+		table[0][breakIndex] = tg[tgIndex].name[:3] + "Breaks"
+		table[0][miscIndex] = tg[tgIndex].name[:3] + "Misc"
+
+		if(tgIndex==1):
+			for i in range(len(tg[1].xmin)):
+				table.append([])
+				for j in range(len(table[0])):
+					table[i+1].append("")
+					if(j==0):
+						table[i+1][j] = tg[1].xmin[i]
+					elif(j==1):
+						table[i+1][j] = tg[1].xmax[i]
+					elif(j==2):
+						table[i+1][j] = tg[1].words[i]
+
+		#for each row
+		for i in range(len(tg[1].xmin)):
+			#for each column
+			for j in range(len(table[i])):
+				#if the column is the tone column
+				if(j==toneIndex):
+					table[i+1][j] = tg[tgIndex].tones[i]
+				#if the column is the break column
+				elif(j==breakIndex):
+					table[i+1][j] = tg[tgIndex].breaks[i]
+				#if the column is the misc column
+				elif(j==miscIndex):
+					table[i+1][j] = tg[tgIndex].misc[i]
+
+		print(table)
 	#######################################
-
-	print(col)
-
-	##### create 2-d array to hold textgrid #####
-	table = [col]
-
-	#for i in range(len(tg[1].xmin)):
-	#	table.append([xmin[i],xmax[i],words[i],tones[i],breaks[i],misc[i]])
-	# for i in range(15):
-	# 	print(table[i])
 
 	##### write to .CSV #####
 	#labelsCSV =  open("melnicoveLabels.csv","a")
