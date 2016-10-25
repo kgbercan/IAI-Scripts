@@ -126,9 +126,12 @@ def main():
 		tg[tgIndex].misc = lineUpTiers(tg[tgIndex].misc,tg[tgIndex].xmax)
 
 		#create column names
-		col[2+tgIndex]=tg[tgIndex].name[:3] + "Tones"
-		col[5+tgIndex]=tg[tgIndex].name[:3] + "Breaks"
-		col[8+tgIndex]=tg[tgIndex].name[:3] + "Misc"
+		toneIndex = 2 + tgIndex
+		breakIndex = toneIndex + len(tg)-1
+		miscIndex = breakIndex + len(tg)-1
+		col[toneIndex] = tg[tgIndex].name[:3] + "Tones"
+		col[breakIndex] = tg[tgIndex].name[:3] + "Breaks"
+		col[miscIndex] = tg[tgIndex].name[:3] + "Misc"
 	#######################################
 
 	print(col)
