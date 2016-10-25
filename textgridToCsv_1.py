@@ -2,6 +2,16 @@ from sys import argv
 import re
 import csv
 
+class TextGrid:
+	def __init__(self,name):
+		self.name=name
+		self.xmin = []
+		self.xmax = []
+		self.words = []
+		self.tones = []
+		self.breaks = []
+		self.misc = []
+
 def lineUpTiers(tier,xmax):
 	linedUp = []
 	i = 0
@@ -23,14 +33,14 @@ def main():
 	##### arguments #####
 	tg = []
 	for textFile in argv:
-		tg.append(textFile)
+		tg.append(TextGrid(textFile))
 
 	for i in range(len(tg)):
 		if(i==0):
 			print("\nscript: ")
 		else:
 			print("\ntextgrid #" + str(i) + ": ")
-		print(tg[i])
+		print(tg[i].name)
 	#####################
 
 	##### regexes #####
@@ -46,21 +56,34 @@ def main():
 	currentTierType = ""
 	currentTierName = ""
 
-	xmin = []
-	xmax = []
-	words = []
-	tones = []
-	breaks = []
-	misc = []
+	# xmin = []
+	# xmax = []
+	# words = []
+	# tones = []
+	# breaks = []
+	# misc = []
 	########################
 
-	##### open and read textgrid #####
-	textgrid1 = open("emily_f2bcprlp1.TextGrid")
-	print(".TextGrid to be read: " + textgrid1.name)
+	# for each textgrid
+		#open
+		#save lines
+		#put in list line by line
+			#if first grid, do xmin, xmax, words
+			#all do tones breaks and misc
+		#send tones break and misc to lineup function
+	# for each grid in
 
-	lines = textgrid1.readlines()
-	textgrid1.close()
-	print(".TextGrid closed: " + str(textgrid1.closed))
+
+
+
+
+	# ##### open and read textgrid #####
+	# textgrid1 = open("emily_f2bcprlp1.TextGrid")
+	# print(".TextGrid to be read: " + textgrid1.name)
+
+	# lines = textgrid1.readlines()
+	# textgrid1.close()
+	# print(".TextGrid closed: " + str(textgrid1.closed))
 	##################################
 
 	#put textgrid in list
