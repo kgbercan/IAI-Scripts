@@ -34,13 +34,6 @@ def main():
 	tg = []
 	for textFile in argv:
 		tg.append(TextGrid(textFile))
-
-	for i in range(len(tg)):
-		if(i==0):
-			print("\nscript: ")
-		else:
-			print("\ntextgrid #" + str(i) + ": ")
-		print(tg[i].name)
 	#####################
 
 	##### regexes #####
@@ -52,115 +45,91 @@ def main():
 	content = re.compile("(text|mark) = \"(.*)\"")
 	###################
 
-	##### initializers #####
-	currentTierType = ""
-	currentTierName = ""
+	##### walk through each .TextGrid #####
+	for tgIndex in range(1,len(tg)):
+		
+		print("\ntextgrid #" + str(tgIndex) + ": ")
+		print(tg[tgIndex].name + "\n")
 
-	# xmin = []
-	# xmax = []
-	# words = []
-	# tones = []
-	# breaks = []
-	# misc = []
-	########################
+		currentTierType = ""
+		currentTierName = ""
 
-	# for each textgrid
-		#open
-		#save lines
-		#put in list line by line
-			#if first grid, do xmin, xmax, words
-			#all do tones breaks and misc
-		#send tones break and misc to lineup function
-	# for each grid in
-
-
-
-
-
-	# ##### open and read textgrid #####
-	# textgrid1 = open("emily_f2bcprlp1.TextGrid")
-	# print(".TextGrid to be read: " + textgrid1.name)
-
-	# lines = textgrid1.readlines()
-	# textgrid1.close()
-	# print(".TextGrid closed: " + str(textgrid1.closed))
-	##################################
-
-	#put textgrid in list
-	#line by line
-	for i in range(len(lines)):
-		current = lines[i]
-
-		#if the line declares a new tier
-		if(itemTier.search(current)):
-			#move to next line, the class line
-			i+=1
-			current = lines[i]
-			currentTierType = tierClass.search(current).group(1).lower()
-
-			#move to next line, the name line
-			i+=1
-			current = lines[i]
-			currentTierName = tierName.search(current).group(1).lower()
-
-		#if intervals or points
-		if(boundary.search(current)):
-			#move to next line
-			i+=1
-			current = lines[i]
-			#get minimum/single point
-			pointType = points.search(current).group(1)
-			point = points.search(current).group(3)
-
-			if(currentTierType=="interval"):
-				#store xmin
-				xmin.append(point)
-
-				#move to next line
-				i+=1
+		with open(tg[tgIndex].name) as textgrid1:
+			lines = textgrid1.readlines()
+			#put grid in list, line by line
+			for i in range(len(lines)):
 				current = lines[i]
-				#get max
-				pointType = points.search(current).group(1)
-				point = points.search(current).group(3)
+				#if the line declares a new tier
+				if(itemTier.search(current)):
+					#move to next line, the class line
+					i+=1
+					current = lines[i]
+					currentTierType = tierClass.search(current).group(1).lower()
 
-				#store xmax
-				xmax.append(point)
-			
-			#move to next line
-			i+=1
-			current = lines[i]
-			#get text
-			contentType = content.search(current).group(1)
-			text = content.search(current).group(2)
+					#move to next line, the name line
+					i+=1
+					current = lines[i]
+					currentTierName = tierName.search(current).group(1).lower()
 
-			#add word, tone, break or misc to csv
-			if(currentTierName=="words"):
-				words.append(text)
-			elif(currentTierName=="tones"):
-				tones.append((point,text))
-			elif(currentTierName=="breaks"):
-				breaks.append((point,text))
-			elif(currentTierName=="misc"):
-				misc.append((point,text))
+				#if intervals or points
+				if(boundary.search(current)):
+					#move to next line
+					i+=1
+					current = lines[i]
+					#get minimum/single point
+					pointType = points.search(current).group(1)
+					point = points.search(current).group(3)
 
-	tones = lineUpTiers(tones,xmax)
-	breaks = lineUpTiers(breaks,xmax)
-	misc = lineUpTiers(misc,xmax)
+					if(currentTierType=="interval"):
+						#store xmin
+						(tg[tgIndex].xmin).append(point)
 
-	##### create 2-d array to hold textgrid #####
-	table = [["xmin","xmax","words","tones","breaks","misc"]]
-	for i in range(len(xmin)):
-		table.append([xmin[i],xmax[i],words[i],tones[i],breaks[i],misc[i]])
-	for i in range(15):
-		print(table[i])
-	#############################################
+						#move to next line
+						i+=1
+						current = lines[i]
+						#get max
+						pointType = points.search(current).group(1)
+						point = points.search(current).group(3)
 
-	##### write to .CSV #####
-	#labelsCSV =  open("melnicoveLabels.csv","a")
-	with open("emily.csv", "w", newline="") as testCSV:
-		print("\n.csv opened for: " + testCSV.mode)
-		writer = csv.writer(testCSV)
-		writer.writerows(table)
-	#########################
+						#store xmax
+						tg[tgIndex].xmax.append(point)
+
+					#move to next line
+					i+=1
+					current = lines[i]
+					#get text
+					contentType = content.search(current).group(1)
+					text = content.search(current).group(2)
+
+					#add word, tone, break or misc to csv
+					if(currentTierName=="words"):
+						tg[tgIndex].words.append(text)
+					elif(currentTierName=="tones"):
+						tg[tgIndex].tones.append((point,text))
+					elif(currentTierName=="breaks"):
+						tg[tgIndex].breaks.append((point,text))
+					elif(currentTierName=="misc"):
+						tg[tgIndex].misc.append((point,text))
+
+		tg[tgIndex].tones = lineUpTiers(tg[tgIndex].tones,tg[tgIndex].xmax)
+		tg[tgIndex].breaks = lineUpTiers(tg[tgIndex].breaks,tg[tgIndex].xmax)
+		tg[tgIndex].misc = lineUpTiers(tg[tgIndex].misc,tg[tgIndex].xmax)
+
+	#######################################
+
+	# ##### create 2-d array to hold textgrid #####
+	# table = [["xmin","xmax","words","tones","breaks","misc"]]
+	# for i in range(len(xmin)):
+	# 	table.append([xmin[i],xmax[i],words[i],tones[i],breaks[i],misc[i]])
+	# for i in range(15):
+	# 	print(table[i])
+
+	# ##### write to .CSV #####
+	# #labelsCSV =  open("melnicoveLabels.csv","a")
+	# with open("emily.csv", "w", newline="") as testCSV:
+	# 	print("\n.csv opened for: " + testCSV.mode)
+	# 	writer = csv.writer(testCSV)
+	# 	writer.writerows(table)
+	# #########################
 
 main()
