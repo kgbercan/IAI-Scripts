@@ -31,9 +31,16 @@ def lineUpTiers(tier,xmax):
 def main():
 
 	##### arguments #####
+	#column names for final spreadsheet
+	col = ["xmin","xmax","words"]
 	tg = []
+
 	for textFile in argv:
 		tg.append(TextGrid(textFile))
+		if(len(tg)!=1):
+			col.append("")
+			col.append("")
+			col.append("")
 	#####################
 
 	##### regexes #####
@@ -47,8 +54,6 @@ def main():
 
 	##### walk through each .TextGrid #####
 
-	#column names for final spreadsheet
-	col = []
 
 	#skip the first one bc that's the script, not a textgrid
 	for tgIndex in range(1,len(tg)):
@@ -121,30 +126,27 @@ def main():
 		tg[tgIndex].misc = lineUpTiers(tg[tgIndex].misc,tg[tgIndex].xmax)
 
 		#create column names
-		if(tgIndex==1):
-			col.append("xmin")
-			col.append("xmax")
-			col.append("words")
-		col.append(tg[tgIndex].name[:3] + "tones")
-		col.append(tg[tgIndex].name[:3] + "breaks")
-		col.append(tg[tgIndex].name[:3] + "misc")
+		col[2+tgIndex]=tg[tgIndex].name[:3] + "Tones"
+		col[5+tgIndex]=tg[tgIndex].name[:3] + "Breaks"
+		col[8+tgIndex]=tg[tgIndex].name[:3] + "Misc"
 	#######################################
 
+	print(col)
 
 	##### create 2-d array to hold textgrid #####
 	table = [col]
 
-	for i in range(len(xmin)):
-		table.append([xmin[i],xmax[i],words[i],tones[i],breaks[i],misc[i]])
+	#for i in range(len(tg[1].xmin)):
+	#	table.append([xmin[i],xmax[i],words[i],tones[i],breaks[i],misc[i]])
 	# for i in range(15):
 	# 	print(table[i])
 
-	# ##### write to .CSV #####
-	# #labelsCSV =  open("melnicoveLabels.csv","a")
-	# with open("emily.csv", "w", newline="") as testCSV:
-	# 	print("\n.csv opened for: " + testCSV.mode)
-	# 	writer = csv.writer(testCSV)
-	# 	writer.writerows(table)
-	# #########################
+	##### write to .CSV #####
+	#labelsCSV =  open("melnicoveLabels.csv","a")
+	with open("test.csv", "w", newline="") as testCSV:
+		print("\n.csv opened for: " + testCSV.mode)
+		writer = csv.writer(testCSV)
+		writer.writerows(table)
+	#########################
 
 main()
