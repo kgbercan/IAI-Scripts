@@ -1,0 +1,965 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 38.279998 
+tiers? <exists> 
+size = 4 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "words" 
+        xmin = 0 
+        xmax = 38.279998 
+        intervals: size = 102 
+        intervals [1]:
+            xmin = 0 
+            xmax = 1.16 
+            text = "computerized" 
+        intervals [2]:
+            xmin = 1.16 
+            xmax = 1.45 
+            text = "phone" 
+        intervals [3]:
+            xmin = 1.45 
+            xmax = 1.94 
+            text = "calls" 
+        intervals [4]:
+            xmin = 1.94 
+            xmax = 2.17 
+            text = "which" 
+        intervals [5]:
+            xmin = 2.17 
+            xmax = 2.31 
+            text = "do" 
+        intervals [6]:
+            xmin = 2.31 
+            xmax = 2.74 
+            text = "everything" 
+        intervals [7]:
+            xmin = 2.74 
+            xmax = 2.96 
+            text = "from" 
+        intervals [8]:
+            xmin = 2.96 
+            xmax = 3.34 
+            text = "selling" 
+        intervals [9]:
+            xmin = 3.34 
+            xmax = 3.86 
+            text = "magazine" 
+        intervals [10]:
+            xmin = 3.86 
+            xmax = 4.73 
+            text = "subscriptions" 
+        intervals [11]:
+            xmin = 4.73 
+            xmax = 4.87 
+            text = "to" 
+        intervals [12]:
+            xmin = 4.87 
+            xmax = 5.34 
+            text = "reminding" 
+        intervals [13]:
+            xmin = 5.34 
+            xmax = 5.64 
+            text = "people" 
+        intervals [14]:
+            xmin = 5.64 
+            xmax = 5.91 
+            text = "about" 
+        intervals [15]:
+            xmin = 5.91 
+            xmax = 6.41 
+            text = "meetings" 
+        intervals [16]:
+            xmin = 6.41 
+            xmax = 6.9 
+            text = "have" 
+        intervals [17]:
+            xmin = 6.9 
+            xmax = 7.34 
+            text = "become" 
+        intervals [18]:
+            xmin = 7.34 
+            xmax = 7.44 
+            text = "the" 
+        intervals [19]:
+            xmin = 7.44 
+            xmax = 7.98 
+            text = "telephone" 
+        intervals [20]:
+            xmin = 7.98 
+            xmax = 8.6 
+            text = "equivalent" 
+        intervals [21]:
+            xmin = 8.6 
+            xmax = 8.74 
+            text = "of" 
+        intervals [22]:
+            xmin = 8.74 
+            xmax = 9.070001 
+            text = "junk" 
+        intervals [23]:
+            xmin = 9.070001 
+            xmax = 9.52 
+            text = "mail" 
+        intervals [24]:
+            xmin = 9.52 
+            xmax = 10.02 
+            text = "But" 
+        intervals [25]:
+            xmin = 10.02 
+            xmax = 10.08 
+            text = "a" 
+        intervals [26]:
+            xmin = 10.08 
+            xmax = 10.29 
+            text = "new" 
+        intervals [27]:
+            xmin = 10.29 
+            xmax = 10.950001 
+            text = "application" 
+        intervals [28]:
+            xmin = 10.950001 
+            xmax = 11.04 
+            text = "of" 
+        intervals [29]:
+            xmin = 11.04 
+            xmax = 11.14 
+            text = "the" 
+        intervals [30]:
+            xmin = 11.14 
+            xmax = 11.88 
+            text = "technology" 
+        intervals [31]:
+            xmin = 11.88 
+            xmax = 12.030001 
+            text = "is" 
+        intervals [32]:
+            xmin = 12.030001 
+            xmax = 12.25 
+            text = "about" 
+        intervals [33]:
+            xmin = 12.25 
+            xmax = 12.360001 
+            text = "to" 
+        intervals [34]:
+            xmin = 12.360001 
+            xmax = 12.48 
+            text = "be" 
+        intervals [35]:
+            xmin = 12.48 
+            xmax = 12.78 
+            text = "tried" 
+        intervals [36]:
+            xmin = 12.78 
+            xmax = 12.95 
+            text = "out" 
+        intervals [37]:
+            xmin = 12.95 
+            xmax = 13.070001 
+            text = "in" 
+        intervals [38]:
+            xmin = 13.070001 
+            xmax = 13.95 
+            text = "Massachusetts" 
+        intervals [39]:
+            xmin = 13.95 
+            xmax = 14.41 
+            text = "to" 
+        intervals [40]:
+            xmin = 14.41 
+            xmax = 14.73 
+            text = "ease" 
+        intervals [41]:
+            xmin = 14.73 
+            xmax = 15.09 
+            text = "crowded" 
+        intervals [42]:
+            xmin = 15.09 
+            xmax = 15.42 
+            text = "jail" 
+        intervals [43]:
+            xmin = 15.42 
+            xmax = 16.17 
+            text = "conditions" 
+        intervals [44]:
+            xmin = 16.17 
+            xmax = 16.880001 
+            text = "Next" 
+        intervals [45]:
+            xmin = 16.880001 
+            xmax = 17.059999 
+            text = "week" 
+        intervals [46]:
+            xmin = 17.059999 
+            xmax = 17.259998 
+            text = "some" 
+        intervals [47]:
+            xmin = 17.259998 
+            xmax = 17.860001 
+            text = "inmates" 
+        intervals [48]:
+            xmin = 17.860001 
+            xmax = 18.280001 
+            text = "released" 
+        intervals [49]:
+            xmin = 18.280001 
+            xmax = 18.700001 
+            text = "early" 
+        intervals [50]:
+            xmin = 18.700001 
+            xmax = 18.959999 
+            text = "from" 
+        intervals [51]:
+            xmin = 18.959999 
+            xmax = 19.07 
+            text = "the" 
+        intervals [52]:
+            xmin = 19.07 
+            xmax = 19.540001 
+            text = "Hampton" 
+        intervals [53]:
+            xmin = 19.540001 
+            xmax = 19.93 
+            text = "county" 
+        intervals [54]:
+            xmin = 19.93 
+            xmax = 20.23 
+            text = "jail" 
+        intervals [55]:
+            xmin = 20.23 
+            xmax = 20.360001 
+            text = "in" 
+        intervals [56]:
+            xmin = 20.360001 
+            xmax = 21.07 
+            text = "Springfield" 
+        intervals [57]:
+            xmin = 21.07 
+            xmax = 21.5 
+            text = "will" 
+        intervals [58]:
+            xmin = 21.5 
+            xmax = 21.619999 
+            text = "be" 
+        intervals [59]:
+            xmin = 21.619999 
+            xmax = 21.98 
+            text = "wearing" 
+        intervals [60]:
+            xmin = 21.98 
+            xmax = 22.049999 
+            text = "a" 
+        intervals [61]:
+            xmin = 22.049999 
+            xmax = 22.93 
+            text = "wristband" 
+        intervals [62]:
+            xmin = 22.93 
+            xmax = 23.02 
+            text = "that" 
+        intervals [63]:
+            xmin = 23.02 
+            xmax = 23.32 
+            text = "hooks" 
+        intervals [64]:
+            xmin = 23.32 
+            xmax = 23.540001 
+            text = "up" 
+        intervals [65]:
+            xmin = 23.540001 
+            xmax = 23.68 
+            text = "with" 
+        intervals [66]:
+            xmin = 23.68 
+            xmax = 23.75 
+            text = "a" 
+        intervals [67]:
+            xmin = 23.75 
+            xmax = 24.209999 
+            text = "special" 
+        intervals [68]:
+            xmin = 24.209999 
+            xmax = 24.720001 
+            text = "jack" 
+        intervals [69]:
+            xmin = 24.720001 
+            xmax = 25 
+            text = "on" 
+        intervals [70]:
+            xmin = 25 
+            xmax = 25.120001 
+            text = "their" 
+        intervals [71]:
+            xmin = 25.120001 
+            xmax = 25.450001 
+            text = "home" 
+        intervals [72]:
+            xmin = 25.450001 
+            xmax = 26.099998 
+            text = "phones" 
+        intervals [73]:
+            xmin = 26.099998 
+            xmax = 26.84 
+            text = "Whenever" 
+        intervals [74]:
+            xmin = 26.84 
+            xmax = 26.870001 
+            text = "a" 
+        intervals [75]:
+            xmin = 26.870001 
+            xmax = 27.49 
+            text = "computer" 
+        intervals [76]:
+            xmin = 27.49 
+            xmax = 28.059999 
+            text = "randomly" 
+        intervals [77]:
+            xmin = 28.059999 
+            xmax = 28.459999 
+            text = "calls" 
+        intervals [78]:
+            xmin = 28.459999 
+            xmax = 28.639999 
+            text = "them" 
+        intervals [79]:
+            xmin = 28.639999 
+            xmax = 28.85 
+            text = "from" 
+        intervals [80]:
+            xmin = 28.85 
+            xmax = 29.25 
+            text = "jail" 
+        intervals [81]:
+            xmin = 29.25 
+            xmax = 29.68 
+            text = "the" 
+        intervals [82]:
+            xmin = 29.68 
+            xmax = 30.08 
+            text = "former" 
+        intervals [83]:
+            xmin = 30.08 
+            xmax = 30.59 
+            text = "prisoner" 
+        intervals [84]:
+            xmin = 30.59 
+            xmax = 31.030001 
+            text = "plugs" 
+        intervals [85]:
+            xmin = 31.030001 
+            xmax = 31.33 
+            text = "in" 
+        intervals [86]:
+            xmin = 31.33 
+            xmax = 31.720001 
+            text = "to" 
+        intervals [87]:
+            xmin = 31.720001 
+            xmax = 31.9 
+            text = "let" 
+        intervals [88]:
+            xmin = 31.9 
+            xmax = 32.43 
+            text = "corrections" 
+        intervals [89]:
+            xmin = 32.43 
+            xmax = 32.900002 
+            text = "officials" 
+        intervals [90]:
+            xmin = 32.900002 
+            xmax = 33.240002 
+            text = "know" 
+        intervals [91]:
+            xmin = 33.240002 
+            xmax = 33.510002 
+            text = "they're" 
+        intervals [92]:
+            xmin = 33.510002 
+            xmax = 33.66 
+            text = "in" 
+        intervals [93]:
+            xmin = 33.66 
+            xmax = 33.760002 
+            text = "the" 
+        intervals [94]:
+            xmin = 33.760002 
+            xmax = 34.09 
+            text = "right" 
+        intervals [95]:
+            xmin = 34.09 
+            xmax = 34.700001 
+            text = "place" 
+        intervals [96]:
+            xmin = 34.700001 
+            xmax = 35 
+            text = "at" 
+        intervals [97]:
+            xmin = 35 
+            xmax = 35.09 
+            text = "the" 
+        intervals [98]:
+            xmin = 35.09 
+            xmax = 35.419998 
+            text = "right" 
+        intervals [99]:
+            xmin = 35.419998 
+            xmax = 35.869999 
+            text = "time" 
+        intervals [100]:
+            xmin = 35.869999 
+            xmax = 36.709999 
+            text = "Margo" 
+        intervals [101]:
+            xmin = 36.709999 
+            xmax = 37.41 
+            text = "Melnicove" 
+        intervals [102]:
+            xmin = 37.41 
+            xmax = 38.079998 
+            text = "reports" 
+    item [2]:
+        class = "TextTier" 
+        name = "tones" 
+        xmin = 0 
+        xmax = 44.460002 
+        points: size = 68 
+        points [1]:
+            number = 0.7154925931129047 
+            mark = "L+H*" 
+        points [2]:
+            number = 1.305603459362057 
+            mark = "!H" 
+        points [3]:
+            number = 1.7022481070851156 
+            mark = "L-L%" 
+        points [4]:
+            number = 2.249117185638903 
+            mark = "L+H" 
+        points [5]:
+            number = 2.570653473543733 
+            mark = "H*" 
+        points [6]:
+            number = 2.892116886292576 
+            mark = "L*" 
+        points [7]:
+            number = 3.1964024441401007 
+            mark = "!H*" 
+        points [8]:
+            number = 3.6029541873434514 
+            mark = "!H*" 
+        points [9]:
+            number = 4.576576743197277 
+            mark = "L-L%" 
+        points [10]:
+            number = 5.166540992181407 
+            mark = "L+H" 
+        points [11]:
+            number = 5.47630463435374 
+            mark = "!H*" 
+        points [12]:
+            number = 5.817198824945265 
+            mark = "L*" 
+        points [13]:
+            number = 6.180544997165532 
+            mark = "H-L%" 
+        points [14]:
+            number = 7.265196218558398 
+            mark = "H+L*" 
+        points [15]:
+            number = 7.701455409533144 
+            mark = "H*+L" 
+        points [16]:
+            number = 8.671705248207603 
+            mark = "L*" 
+        points [17]:
+            number = 9.437066144654127 
+            mark = "L-L%" 
+        points [18]:
+            number = 10.223820115291964 
+            mark = "L+H*" 
+        points [19]:
+            number = 10.60992357882918 
+            mark = "L*" 
+        points [20]:
+            number = 11.806762676682968 
+            mark = "L+!H*" 
+        points [21]:
+            number = 12.179067844929822 
+            mark = "!H*" 
+        points [22]:
+            number = 12.675474735925627 
+            mark = "!H*" 
+        points [23]:
+            number = 13.766427998974924 
+            mark = "!H-L%" 
+        points [24]:
+            number = 14.492095672979357 
+            mark = "H+H" 
+        points [25]:
+            number = 15.01413926709728 
+            mark = "H*" 
+        points [26]:
+            number = 15.378577791771315 
+            mark = "!H*" 
+        points [27]:
+            number = 16.162674908230933 
+            mark = "L-L%" 
+        points [28]:
+            number = 16.652442067104896 
+            mark = "H*" 
+        points [29]:
+            number = 16.93449138866053 
+            mark = "!H+L" 
+        points [30]:
+            number = 17.210899723785047 
+            mark = "L*" 
+        points [31]:
+            number = 17.729040996751262 
+            mark = "!H-L%" 
+        points [32]:
+            number = 18.214165892562615 
+            mark = "L+H*" 
+        points [33]:
+            number = 18.546984135037846 
+            mark = "!H*" 
+        points [34]:
+            number = 19.003904095046217 
+            mark = "L*" 
+        points [35]:
+            number = 19.305119190232762 
+            mark = "!H*" 
+        points [36]:
+            number = 19.784603219795574 
+            mark = "!H*" 
+        points [37]:
+            number = 20.173831432028916 
+            mark = "!H*" 
+        points [38]:
+            number = 20.89587797066468 
+            mark = "!H-L%" 
+        points [39]:
+            number = 21.45266597731377 
+            mark = "L+H" 
+        points [40]:
+            number = 21.88317129954283 
+            mark = "H*" 
+        points [41]:
+            number = 22.7349605700821 
+            mark = "H*-L%" 
+        points [42]:
+            number = 23.152393722531812 
+            mark = "L+H" 
+        points [43]:
+            number = 24.045121627463008 
+            mark = "L+H*" 
+        points [44]:
+            number = 24.62614344776463 
+            mark = "H-L%" 
+        points [45]:
+            number = 25.06298542082348 
+            mark = "L+L*" 
+        points [46]:
+            number = 26.044517421588445 
+            mark = "H-L%" 
+        points [47]:
+            number = 26.61989824962308 
+            mark = "L*+H" 
+        points [48]:
+            number = 27.328544919507728 
+            mark = "H*+L" 
+        points [49]:
+            number = 27.785632128373276 
+            mark = "!H*" 
+        points [50]:
+            number = 28.27639810495633 
+            mark = "!H*" 
+        points [51]:
+            number = 28.750241116829617 
+            mark = "L*" 
+        points [52]:
+            number = 29.195879187519974 
+            mark = "H-L%" 
+        points [53]:
+            number = 29.576683568135486 
+            mark = "L+H" 
+        points [54]:
+            number = 29.90950186333421 
+            mark = "H*" 
+        points [55]:
+            number = 30.304371027129307 
+            mark = "!H*" 
+        points [56]:
+            number = 30.812059952008717 
+            mark = "!H*" 
+        points [57]:
+            number = 31.23513405607489 
+            mark = "!H-L%" 
+        points [58]:
+            number = 32.180203084694945 
+            mark = "H+H*" 
+        points [59]:
+            number = 32.65404607052564 
+            mark = "L*" 
+        points [60]:
+            number = 33.094043128797 
+            mark = "L+!H" 
+        points [61]:
+            number = 33.90763107650232 
+            mark = "L+!H" 
+        points [62]:
+            number = 34.449165908697864 
+            mark = "H-L%" 
+        points [63]:
+            number = 34.95602279081173 
+            mark = "L*" 
+        points [64]:
+            number = 35.223396646295186 
+            mark = "H*" 
+        points [65]:
+            number = 35.62730034105058 
+            mark = "L-L%" 
+        points [66]:
+            number = 36.29857798729976 
+            mark = "L+H*" 
+        points [67]:
+            number = 37.031906375077185 
+            mark = "!H+L*" 
+        points [68]:
+            number = 37.658055998487136 
+            mark = "!H-L%" 
+    item [3]:
+        class = "TextTier" 
+        name = "breaks" 
+        xmin = 0 
+        xmax = 44.460002 
+        points: size = 102 
+        points [1]:
+            number = 1.144115 
+            mark = "3" 
+        points [2]:
+            number = 1.452146 
+            mark = "1" 
+        points [3]:
+            number = 1.908692 
+            mark = "4" 
+        points [4]:
+            number = 2.156217 
+            mark = "1" 
+        points [5]:
+            number = 2.28823 
+            mark = "1" 
+        points [6]:
+            number = 2.722773 
+            mark = "3" 
+        points [7]:
+            number = 2.937295 
+            mark = "2" 
+        points [8]:
+            number = 3.311333 
+            mark = "1" 
+        points [9]:
+            number = 3.795381 
+            mark = "1" 
+        points [10]:
+            number = 4.719474 
+            mark = "4" 
+        points [11]:
+            number = 4.862487 
+            mark = "1-" 
+        points [12]:
+            number = 5.335535 
+            mark = "1" 
+        points [13]:
+            number = 5.616063 
+            mark = "1" 
+        points [14]:
+            number = 5.891091 
+            mark = "1" 
+        points [15]:
+            number = 6.38614 
+            mark = "4" 
+        points [16]:
+            number = 6.875688 
+            mark = "1" 
+        points [17]:
+            number = 7.326733 
+            mark = "3-" 
+        points [18]:
+            number = 7.442245 
+            mark = "1" 
+        points [19]:
+            number = 7.970298 
+            mark = "1" 
+        points [20]:
+            number = 8.580859 
+            mark = "4*" 
+        points [21]:
+            number = 8.729374 
+            mark = "1" 
+        points [22]:
+            number = 9.031905 
+            mark = "1" 
+        points [23]:
+            number = 9.521454 
+            mark = "4" 
+        points [24]:
+            number = 10.011001 
+            mark = "0" 
+        points [25]:
+            number = 10.077008 
+            mark = "1-" 
+        points [26]:
+            number = 10.29153 
+            mark = "1" 
+        points [27]:
+            number = 10.919572 
+            mark = "3-" 
+        points [28]:
+            number = 11.035084 
+            mark = "1-" 
+        points [29]:
+            number = 11.128593 
+            mark = "1-" 
+        points [30]:
+            number = 11.832664 
+            mark = "4*" 
+        points [31]:
+            number = 12.019683 
+            mark = "1" 
+        points [32]:
+            number = 12.267208 
+            mark = "1" 
+        points [33]:
+            number = 12.360717 
+            mark = "1-" 
+        points [34]:
+            number = 12.465228 
+            mark = "1" 
+        points [35]:
+            number = 12.767758 
+            mark = "0" 
+        points [36]:
+            number = 12.943776 
+            mark = "1" 
+        points [37]:
+            number = 13.08679 
+            mark = "1" 
+        points [38]:
+            number = 13.928374 
+            mark = "4" 
+        points [39]:
+            number = 14.406922 
+            mark = "1" 
+        points [40]:
+            number = 14.692951 
+            mark = "2-" 
+        points [41]:
+            number = 15.101837 
+            mark = "4" 
+        points [42]:
+            number = 15.397229 
+            mark = "4" 
+        points [43]:
+            number = 16.161598 
+            mark = "4" 
+        points [44]:
+            number = 16.853453 
+            mark = "1" 
+        points [45]:
+            number = 17.040016 
+            mark = "3" 
+        points [46]:
+            number = 17.22658 
+            mark = "1" 
+        points [47]:
+            number = 17.843274 
+            mark = "4" 
+        points [48]:
+            number = 18.257859 
+            mark = "2-" 
+        points [49]:
+            number = 18.667262 
+            mark = "4*" 
+        points [50]:
+            number = 18.916008 
+            mark = "1" 
+        points [51]:
+            number = 19.066295 
+            mark = "2-" 
+        points [52]:
+            number = 19.543068 
+            mark = "2-" 
+        points [53]:
+            number = 19.848824 
+            mark = "1" 
+        points [54]:
+            number = 20.227133 
+            mark = "1-" 
+        points [55]:
+            number = 20.341143 
+            mark = "1" 
+        points [56]:
+            number = 21.035573 
+            mark = "4" 
+        points [57]:
+            number = 21.476065 
+            mark = "1" 
+        points [58]:
+            number = 21.605623 
+            mark = "1" 
+        points [59]:
+            number = 21.95802 
+            mark = "1-" 
+        points [60]:
+            number = 22.046119 
+            mark = "1-" 
+        points [61]:
+            number = 22.761277 
+            mark = "4" 
+        points [62]:
+            number = 23.020393 
+            mark = "1" 
+        points [63]:
+            number = 23.310602 
+            mark = "1" 
+        points [64]:
+            number = 23.528259 
+            mark = "3-" 
+        points [65]:
+            number = 23.668182 
+            mark = "1-" 
+        points [66]:
+            number = 23.740734 
+            mark = "1" 
+        points [67]:
+            number = 24.196777 
+            mark = "1" 
+        points [68]:
+            number = 24.694279 
+            mark = "4" 
+        points [69]:
+            number = 24.968937 
+            mark = "1" 
+        points [70]:
+            number = 25.10886 
+            mark = "1" 
+        points [71]:
+            number = 25.440528 
+            mark = "1" 
+        points [72]:
+            number = 26.103863 
+            mark = "4" 
+        points [73]:
+            number = 26.817332847478102 
+            mark = "3-" 
+        points [74]:
+            number = 26.880387 
+            mark = "1-" 
+        points [75]:
+            number = 27.530593 
+            mark = "4*" 
+        points [76]:
+            number = 28.059472 
+            mark = "1" 
+        points [77]:
+            number = 28.449322 
+            mark = "1" 
+        points [78]:
+            number = 28.619712 
+            mark = "3" 
+        points [79]:
+            number = 28.850067 
+            mark = "1" 
+        points [80]:
+            number = 29.249459 
+            mark = "4" 
+        points [81]:
+            number = 29.664105 
+            mark = "1" 
+        points [82]:
+            number = 30.073508 
+            mark = "3" 
+        points [83]:
+            number = 30.560645 
+            mark = "4" 
+        points [84]:
+            number = 31.011506 
+            mark = "1" 
+        points [85]:
+            number = 31.31208 
+            mark = "4" 
+        points [86]:
+            number = 31.690383 
+            mark = "1" 
+        points [87]:
+            number = 31.876946 
+            mark = "2-" 
+        points [88]:
+            number = 32.421089 
+            mark = "1" 
+        points [89]:
+            number = 32.877132 
+            mark = "3*" 
+        points [90]:
+            number = 33.25544 
+            mark = "4*" 
+        points [91]:
+            number = 33.473097 
+            mark = "1" 
+        points [92]:
+            number = 33.649296 
+            mark = "1" 
+        points [93]:
+            number = 33.742578 
+            mark = "1" 
+        points [94]:
+            number = 34.08461 
+            mark = "1" 
+        points [95]:
+            number = 34.69094 
+            mark = "4" 
+        points [96]:
+            number = 34.975967 
+            mark = "1" 
+        points [97]:
+            number = 35.069249 
+            mark = "1" 
+        points [98]:
+            number = 35.421646 
+            mark = "1" 
+        points [99]:
+            number = 35.810319 
+            mark = "4" 
+        points [100]:
+            number = 36.688265 
+            mark = "1" 
+        points [101]:
+            number = 37.398241 
+            mark = "4*" 
+        points [102]:
+            number = 38.082306 
+            mark = "4" 
+    item [4]:
+        class = "TextTier" 
+        name = "misc" 
+        xmin = 0 
+        xmax = 44.460002 
+        points: size = 5 
+        points [1]:
+            number = 8.652366 
+            mark = "glottalization" 
+        points [2]:
+            number = 8.663368 
+            mark = "f0 error" 
+        points [3]:
+            number = 23.937662 
+            mark = "f0 error" 
+        points [4]:
+            number = 26.710193 
+            mark = "late f0?" 
+        points [5]:
+            number = 37.4397 
+            mark = "f0 error - creak" 
