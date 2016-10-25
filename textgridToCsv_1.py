@@ -21,11 +21,16 @@ def lineUpTiers(tier,xmax):
 def main():
 
 	##### arguments #####
-	script, tg1, tg2, tg3 = argv
-	print("\nscript: " + script)
-	print("\ntextgrid1: " + tg1)
-	print("\ntextgrid2: " + tg2)
-	print("\ntextgrid3: " + tg3 + "\n")
+	tg = []
+	for textFile in argv:
+		tg.append(textFile)
+
+	for i in range(len(tg)):
+		if(i==0):
+			print("\nscript: ")
+		else:
+			print("\ntextgrid #" + str(i) + ": ")
+		print(tg[i])
 	#####################
 
 	##### regexes #####
