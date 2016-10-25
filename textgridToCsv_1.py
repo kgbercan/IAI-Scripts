@@ -2,6 +2,7 @@ from sys import argv
 import re
 import csv
 
+##### TextGrid Class #####
 class TextGrid:
 	def __init__(self,name):
 		self.name=name
@@ -11,7 +12,9 @@ class TextGrid:
 		self.tones = []
 		self.breaks = []
 		self.misc = []
+#########################
 
+##### lining up annotations with words #####
 def lineUpTiers(tier,xmax):
 	linedUp = []
 	i = 0
@@ -27,21 +30,25 @@ def lineUpTiers(tier,xmax):
 	while(len(linedUp)<len(xmax)):
 		linedUp.append("")
 	return(linedUp)
+###########################################
 
 def main():
 
-	##### arguments #####
+	##### initializing lists #####
 	#column names for final spreadsheet
 	table = [["xmin","xmax","words"]]
+	#list to access textgrids
 	tg = []
+	##############################
 
+	##### arguments #####
 	for textFile in argv:
 		tg.append(TextGrid(textFile))
+		#add a column in the table for each tier for each person
 		if(len(tg)!=1):
 			table[0].append("")
 			table[0].append("")
 			table[0].append("")
-
 	#####################
 
 	##### regexes #####
@@ -63,8 +70,8 @@ def main():
 		currentTierType = ""
 		currentTierName = ""
 
-		with open(tg[tgIndex].name) as textgrid1:
-			lines = textgrid1.readlines()
+		with open(tg[tgIndex].name) as textgrid:
+			lines = textgrid.readlines()
 			#put grid in list, line by line
 			for i in range(len(lines)):
 				current = lines[i]
@@ -124,16 +131,20 @@ def main():
 		tg[tgIndex].breaks = lineUpTiers(tg[tgIndex].breaks,tg[1].xmax)
 		tg[tgIndex].misc = lineUpTiers(tg[tgIndex].misc,tg[1].xmax)
 
+
+
+		##### putting it into a 2-d list for the csv later #####
 		### create column names
 		#columns that already exist are xmin, xmax, and words
 		#so the base number is 2 and we increment by the number of files there are
 		toneIndex = 2 + tgIndex
-		breakIndex = toneIndex + len(tg)-1
+		breakIndex = toneIndex + len(tg)-1 #remember that the first name in tg is the script file
 		miscIndex = breakIndex + len(tg)-1
 		table[0][toneIndex] = tg[tgIndex].name[:3] + "Tones"
 		table[0][breakIndex] = tg[tgIndex].name[:3] + "Breaks"
 		table[0][miscIndex] = tg[tgIndex].name[:3] + "Misc"
 
+		### put in the words and where they happen
 		#if its the first textgrid, that's the words, xmins, and xmaxs we will use
 		if(tgIndex==1):
 			for i in range(len(tg[1].xmin)):
@@ -147,7 +158,7 @@ def main():
 					elif(j==2):
 						table[i+1][j] = tg[1].words[i]
 
-		#now fill in the annotations
+		### fill in each person's annotations
 		#for each row
 		for i in range(len(tg[1].xmin)):
 			#for each column
@@ -161,15 +172,12 @@ def main():
 				#if the column is the misc column
 				elif(j==miscIndex):
 					table[i+1][j] = tg[tgIndex].misc[i]
-
-		print(table)
-	#######################################
+		########################################################
 
 	##### write to .CSV #####
-	#labelsCSV =  open("melnicoveLabels.csv","a")
-	with open("test.csv", "w", newline="") as testCSV:
-		print("\n.csv opened for: " + testCSV.mode)
-		writer = csv.writer(testCSV)
+	with open("melnicoveLabels.csv", "w", newline="") as labelsCSV:
+		print("\n.csv opened for: " + labelsCSV.mode)
+		writer = csv.writer(labelsCSV)
 		writer.writerows(table)
 	#########################
 
