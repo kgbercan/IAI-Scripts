@@ -40,7 +40,7 @@ def main():
 	########################
 
 	##### open and read textgrid #####
-	textgrid1 = open("karina_f2bcprlp1.TextGrid")
+	textgrid1 = open("emily_f2bcprlp1.TextGrid")
 	print(".TextGrid to be read: " + textgrid1.name)
 
 	lines = textgrid1.readlines()
@@ -119,7 +119,7 @@ def main():
 
 	##### write to .CSV #####
 	#labelsCSV =  open("melnicoveLabels.csv","a")
-	with open("test.csv", "w", newline="") as testCSV:
+	with open("emily.csv", "w", newline="") as testCSV:
 		print("\n.csv opened for: " + testCSV.mode)
 		writer = csv.writer(testCSV)
 		writer.writerows(table)
