@@ -2,15 +2,15 @@ from sys import argv
 import re
 import csv
 
-######## matches #############################
-def matches(row):
+######## agreements #############################
+def agreements(row):
 
 	print("PART 1")
 	row = cleanUp(row)
 
 	print("\n\nPART 2")
 	###comparing
-	matches = 0
+	agreements = 0
 	total = 0
 	#for each labeler on this word
 	for i in range(len(row)-1):
@@ -28,14 +28,15 @@ def matches(row):
 					#print("\nJ: " + row[i][j])
 					#print("K: " + row[i2][k])
 					if(row[i][j]==row[i2][k]):
-						print("\n" + row[i][j] + " MATCHES " + row[i2][k] + "\n")
-						matches += 1
+						print("\n" + row[i][j] + " agreements " + row[i2][k] + "\n")
+						agreements += 1
 
-	print("There are " + str(matches) + " matches out of " + str(total) + " on this word.")
-	print("\nEND OF MATCHES()\n")
-	return(matches)
+	agreements = str(agreements) + "/" + str(total)
 
-######## matches #############################
+	print("There are " + agreements + " agreements on this word.")
+	print("\nEND OF agreements()\n")
+	return(agreements)
+######## agreements #############################
 
 
 ######## clean-up ############################
@@ -54,25 +55,32 @@ def cleanUp(labels):
 
 
 ######## main ################################
-
 def main():
 
 	#open file
 	with open(argv[1],"r", newline="") as tgCsv:
 		reader = csv.reader(tgCsv, delimiter=',')
+		table = []
 
 		for row in reader:
-			#subtract 3 from length of spreadsheat because xmin, xmax, and word are not useful
-			numColumns = len(row) - 3
-			#divide remaning columns by 3 (tones, breaks, misc) to get # of people
-			numAnnotators = int(numColumns/3)
-			#saves the columns for each person's tones
-			r = []
-			for i in range(3,3+numAnnotators):
-				r.append(row[i])
-			row.append(matches(r))
+			if(reader.line_num==1):
+				#subtract 3 from length of spreadsheat because xmin, xmax, and word are not useful
+				numColumns = len(row) - 3
+				#divide remaning columns by 3 (tones, breaks, misc) to get # of people
+				numAnnotators = int(numColumns/3)
+				row.append("toneAgreements")
+			else:
+				#saves the columns for each person's tones
+				r = []
+				for i in range(3,3+numAnnotators):
+					r.append(row[i])
+				row.append(agreements(r))
+			table.append(row)
 			print(row)
 
+		with open(argv[1], "w", newline="") as labelsCSV:
+			writer = csv.writer(labelsCSV)
+			writer.writerows(table)
 ######## main ################################
 
 main()
