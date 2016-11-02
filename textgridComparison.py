@@ -1,5 +1,4 @@
 from sys import argv
-import re
 import csv
 
 ######## agreements #############################
@@ -45,13 +44,32 @@ def cleanUp(labels):
 		labels[i] = labels[i].strip()
 		#print("i: " + labels[i], end=" ")
 		labels[i] = labels[i].split(" ")
-
-		for j in range(len(labels[i])):
-			#print("j: " + labels[i][j], end=" ")
-
-		#print()
 	return(labels)
 ######## clean-up ############################
+
+
+######## order columns #######################
+def orderColumns():
+	with open(argv[1],"r", newline="") as original:
+		reader = csv.reader(original, delimiter=',')
+		colNames = next(reader)
+		orderedNames = []
+
+		for i in range(len(colNames)-1):
+			before = colNames[i-1].find("Tones")
+			current = colNames[i].find("Breaks")
+			if(before != -1 and current != -1):
+				agrmtCol = len(colNames)-1
+				orderedNames.append(colNames[agrmtCol])
+			orderedNames.append(colNames[i])
+
+		with open("ordered_" + argv[1], "w", newline="") as ordered:
+			writer = csv.DictWriter(ordered,fieldnames=orderedNames)
+			writer.writeheader()
+			original.seek(0)
+			for row in csv.DictReader(original):
+				writer.writerow(row)
+######## order columns #######################
 
 
 ######## main ################################
@@ -82,24 +100,7 @@ def main():
 			writer = csv.writer(agreementsCSV)
 			writer.writerows(table)
 
-	with open(argv[1],"r", newline="") as original, open("ordered_" + argv[1], "w", newline="") as ordered:
-		reader = csv.reader(original, delimiter=',')
-		colNames = next(reader)
-		orderedNames = []
-
-		for i in range(len(colNames)-1):
-			before = colNames[i-1].find("Tones")
-			current = colNames[i].find("Breaks")
-			if(before != -1 and current != -1):
-				agrmtCol = len(colNames)-1
-				orderedNames.append(colNames[agrmtCol])
-			orderedNames.append(colNames[i])
-
-		writer = csv.DictWriter(ordered,fieldnames=orderedNames)
-		writer.writeheader()
-		original.seek(0)
-		for row in csv.DictReader(original):
-			writer.writerow(row)
+	orderColumns()
 ######## main ################################
 
 main()
