@@ -5,10 +5,10 @@ import csv
 ######## agreements #############################
 def agreements(row):
 
-	print("PART 1")
+	#print("PART 1")
 	row = cleanUp(row)
 
-	print("\n\nPART 2")
+	#print("\n\nPART 2")
 	###comparing
 	agreements = 0
 	total = 0
@@ -28,13 +28,13 @@ def agreements(row):
 					#print("\nJ: " + row[i][j])
 					#print("K: " + row[i2][k])
 					if(row[i][j]==row[i2][k]):
-						print("\n" + row[i][j] + " agreements " + row[i2][k] + "\n")
+						#print("\n" + row[i][j] + " agrees with " + row[i2][k] + "\n")
 						agreements += 1
 
 	agreements = str(agreements) + "/" + str(total)
 
-	print("There are " + agreements + " agreements on this word.")
-	print("\nEND OF agreements()\n")
+	#print("There are " + agreements + " agreements on this word.")
+	#print("\nEND OF agreements()\n")
 	return(agreements)
 ######## agreements #############################
 
@@ -43,13 +43,13 @@ def agreements(row):
 def cleanUp(labels):
 	for i in range(len(labels)):
 		labels[i] = labels[i].strip()
-		print("i: " + labels[i], end=" ")
+		#print("i: " + labels[i], end=" ")
 		labels[i] = labels[i].split(" ")
 
 		for j in range(len(labels[i])):
-			print("j: " + labels[i][j], end=" ")
+			#print("j: " + labels[i][j], end=" ")
 
-		print()
+		#print()
 	return(labels)
 ######## clean-up ############################
 
@@ -76,11 +76,30 @@ def main():
 					r.append(row[i])
 				row.append(agreements(r))
 			table.append(row)
-			print(row)
+			#print(row)
 
-		with open(argv[1], "w", newline="") as labelsCSV:
-			writer = csv.writer(labelsCSV)
+		with open(argv[1], "w", newline="") as agreementsCSV:
+			writer = csv.writer(agreementsCSV)
 			writer.writerows(table)
+
+	with open(argv[1],"r", newline="") as original, open("ordered_" + argv[1], "w", newline="") as ordered:
+		reader = csv.reader(original, delimiter=',')
+		colNames = next(reader)
+		orderedNames = []
+
+		for i in range(len(colNames)-1):
+			before = colNames[i-1].find("Tones")
+			current = colNames[i].find("Breaks")
+			if(before != -1 and current != -1):
+				agrmtCol = len(colNames)-1
+				orderedNames.append(colNames[agrmtCol])
+			orderedNames.append(colNames[i])
+
+		writer = csv.DictWriter(ordered,fieldnames=orderedNames)
+		writer.writeheader()
+		original.seek(0)
+		for row in csv.DictReader(original):
+			writer.writerow(row)
 ######## main ################################
 
 main()
