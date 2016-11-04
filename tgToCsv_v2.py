@@ -175,7 +175,7 @@ def main():
 		########################################################
 
 	##### write to .CSV #####
-	with open("melnicoveLabels.csv", "w", newline="") as labelsCSV:
+	with open("textgrid.csv", "w", newline="") as labelsCSV:
 		print("\n.csv opened for: " + labelsCSV.mode)
 		writer = csv.writer(labelsCSV)
 		writer.writerows(table)
