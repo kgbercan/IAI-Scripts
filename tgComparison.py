@@ -3,12 +3,8 @@ import csv
 
 ######## agreements #############################
 def agreements(row):
-
-	#print("PART 1")
 	row = cleanUp(row)
 
-	#print("\n\nPART 2")
-	###comparing
 	agreements = 0
 	total = 0
 	#for each labeler on this word
@@ -21,31 +17,33 @@ def agreements(row):
 			while(i2<len(row)-1):
 				#increment the labeler index
 				i2 += 1
-				#for each label on the next labeler's word
-				for k in range(len(row[i2])):
-					total += 1
-					#print("\nJ: " + row[i][j])
-					#print("K: " + row[i2][k])
-					if(row[i][j]==row[i2][k]):
-						#print("\n" + row[i][j] + " agrees with " + row[i2][k] + "\n")
-						agreements += 1
+				if(row[i][j]==row[i2][j]):
+					agreements += 1
+				total+=1
 
 	agreements = str(agreements) + "/" + str(total)
 
-	#print("There are " + agreements + " agreements on this word.")
-	#print("\nEND OF agreements()\n")
 	return(agreements)
 ######## agreements #############################
 
 
 ######## clean-up ############################
 def cleanUp(labels):
+
 	for i in range(len(labels)):
 		labels[i] = labels[i].strip()
-		#print("i: " + labels[i], end=" ")
+		#-1 means there IS NOT a space and thus this has only one label
 		if(labels[i].find(" ")==-1):
-			labels[i] = " " + labels[i]
+			#a boundary tone WOULD have a % mark so -1 means this is NOT a boundary tone
+			if(labels[i].find("%")==-1):
+				#add a space at the end to hold the place of a boundary tone annotation
+				labels[i] = labels[i] + " "
+			#if this IS a boundary tone...
+			else:
+				#add a space at the beginning to hold the place of a pitch accent annotation
+				labels[i] = " " + labels[i]
 		labels[i] = labels[i].split(" ")
+
 	return(labels)
 ######## clean-up ############################
 
