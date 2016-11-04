@@ -87,7 +87,7 @@ def main():
 
 				#store xmax
 				xmax.append(point)
-			
+
 			#move to next line
 			i+=1
 			current = lines[i]
