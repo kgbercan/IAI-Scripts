@@ -94,7 +94,6 @@ def main():
 					r.append(row[i])
 				row.append(agreements(r))
 			table.append(row)
-			#print(row)
 
 		with open(argv[1], "w", newline="") as agreementsCSV:
 			writer = csv.writer(agreementsCSV)
