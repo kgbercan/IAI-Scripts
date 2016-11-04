@@ -39,7 +39,7 @@ The program adds a point for each pair of matching pitch accents and for each pa
 ### Example usage
 ```
 > python3 tgToCsv_v2.py karina_f2bcprlp1.TextGrid emily_f2bcprlp1.TextGrid sara_f2bcprlp1.TextGrid
-> python3 tgComp_v2.py melnicoveLabels.csv
+> python3 tgComp_v2.py textgrid.csv
 ```
 
 ## tgComp_v1.py
@@ -59,5 +59,5 @@ The program adds a point for each pair of matching labels. The point system does
 ###Example usage
 ```
 > python3 tgToCsv_v2.py karina_f2bcprlp1.TextGrid emily_f2bcprlp1.TextGrid sara_f2bcprlp1.TextGrid
-> python3 tgComp_v1.py melnicoveLabels.csv
+> python3 tgComp_v1.py textgrid.csv
 ```
