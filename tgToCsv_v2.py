@@ -4,8 +4,20 @@ import csv
 
 ##### TextGrid Class #####
 class TextGrid:
+
 	def __init__(self,name):
-		self.name=name
+		## REGEX for file name
+		textGridFileName = re.compile("(([\w\s-]*\/)*)(\w+)?_([\w\s-]+)\.TextGrid")
+			#group 1 matches path
+			#group 3 matches person's name (or whatever is before an underscore)
+			#group 4 matches file name (minus the name and underscore)
+
+		#name is location of .TextGrid
+		self.name = name
+		#a TextGrid object is created for each argument, which includes the script (the script is argv[0]), so this if statement makes sure we don't try to find a name that isn't there
+		if(textGridFileName.search(name)):
+			#labeler is name of person who named
+			self.labeler = textGridFileName.search(name).group(3)
 		self.xmin = []
 		self.xmax = []
 		self.words = []
@@ -34,6 +46,19 @@ def lineUpTiers(tier,xmax):
 
 def main():
 
+	##### regexes #####
+	textGridFileName = re.compile("(([\w\s-]*\/)*)(\w+)?_([\w\s-]+)\.TextGrid")
+		#group 1 matches path
+		#group 3 matches person's name (or whatever is before an underscore)
+		#group 4 matches file name (minus the name and underscore)
+	itemTier = re.compile("item \[\d+\]:")
+	tierClass = re.compile("class = \"(\w+)Tier\"")
+	tierName = re.compile("name = \"(\w+)\"")
+	boundary = re.compile("(intervals|points) \[\d+\]:")
+	points = re.compile("(xm(in|ax)|number) = (\d+(\.\d+)?)")
+	content = re.compile("(text|mark) = \"(.*)\"")
+	###################
+
 	##### initializing lists #####
 	#column names for final spreadsheet
 	table = [["xmin","xmax","words"]]
@@ -50,15 +75,6 @@ def main():
 			table[0].append("")
 			table[0].append("")
 	#####################
-
-	##### regexes #####
-	itemTier = re.compile("item \[\d+\]:")
-	tierClass = re.compile("class = \"(\w+)Tier\"")
-	tierName = re.compile("name = \"(\w+)\"")
-	boundary = re.compile("(intervals|points) \[\d+\]:")
-	points = re.compile("(xm(in|ax)|number) = (\d+(\.\d+)?)")
-	content = re.compile("(text|mark) = \"(.*)\"")
-	###################
 
 	##### walk through each .TextGrid #####
 	#skip the first one bc that's the script, not a textgrid
@@ -143,9 +159,9 @@ def main():
 		toneIndex = 2 + tgIndex
 		breakIndex = toneIndex + len(tg)-1 #remember that the first name in tg is the script file
 		miscIndex = breakIndex + len(tg)-1
-		table[0][toneIndex] = tg[tgIndex].name[:3] + "Tones"
-		table[0][breakIndex] = tg[tgIndex].name[:3] + "Breaks"
-		table[0][miscIndex] = tg[tgIndex].name[:3] + "Misc"
+		table[0][toneIndex] = tg[tgIndex].labeler + "Tones"
+		table[0][breakIndex] = tg[tgIndex].labeler + "Breaks"
+		table[0][miscIndex] = tg[tgIndex].labeler + "Misc"
 
 		### put in the words and where they happen
 		#if its the first textgrid, that's the words, xmins, and xmaxs we will use
@@ -183,12 +199,11 @@ def main():
 	##### write to .CSV #####
 
 	######### IMPORTANT ########
-	# THIS NEW FILE NAME FITS THE LENGTH OF THE NAMING CONVENTIONS OF THE SPRING 2017 INTONATION AND EVIDENCE SOUND FILES
+	# THIS NEW FILE NAME FITS THE NAMING CONVENTIONS OF THE SPRING 2017 INTONATION AND EVIDENCE SOUND FILES
 	# YOU MAY HAVE TO CHANGE THIS NAME NOT TO CAUSE ERRORS
-	# THE FILE ENDING THIS WORKS WITH LOOKS LIKE THIS: sara_SC-S2H2-P02-R3-A29.TextGrid
-	newFileName = argv[1]
-	newFileName = newFileName[-27:-9] + ".csv"
 	# e.g. sara_SC-S2H2-P02-R3-A29.TextGrid becomes SC-S2H2-P02-R3-A29.csv
+	# also it maintains the path
+	newFileName = textGridFileName.search(argv[1]).group(1) + textGridFileName.search(argv[1]).group(4) + ".csv"
 	print(newFileName)
 	#########
 
