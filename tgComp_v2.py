@@ -1,4 +1,5 @@
 from sys import argv
+import re
 import csv
 
 ######## agreements #############################
@@ -63,7 +64,7 @@ def orderColumns():
 				orderedNames.append(colNames[agrmtCol])
 			orderedNames.append(colNames[i])
 
-		with open("ordered_" + argv[1], "w", newline="") as ordered:
+		with open(argv[1], "w", newline="") as ordered:
 			writer = csv.DictWriter(ordered,fieldnames=orderedNames)
 			writer.writeheader()
 			original.seek(0)
@@ -95,7 +96,12 @@ def main():
 				row.append(agreements(r))
 			table.append(row)
 
-		with open(argv[1], "w", newline="") as agreementsCSV:
+		## REGEX for file name
+		compFileName = re.compile("(([\w\s-]*\/)*)([\w\s-]+\.csv)")
+			#group 1 matches path
+			#group 3 matches file name
+		orderedFileName = compFileName.search(argv[1]).group(1) + "ordered_" + compFileName.search(argv[1]).group(3) + ".csv"
+		with open(orderedFileName, "w", newline="") as agreementsCSV:
 			writer = csv.writer(agreementsCSV)
 			writer.writerows(table)
 
