@@ -181,7 +181,18 @@ def main():
 		########################################################
 
 	##### write to .CSV #####
-	with open("textgrid.csv", "w", newline="") as labelsCSV:
+
+	######### IMPORTANT ########
+	# THIS NEW FILE NAME FITS THE LENGTH OF THE NAMING CONVENTIONS OF THE SPRING 2017 INTONATION AND EVIDENCE SOUND FILES
+	# YOU MAY HAVE TO CHANGE THIS NAME NOT TO CAUSE ERRORS
+	# THE FILE ENDING THIS WORKS WITH LOOKS LIKE THIS: sara_SC-S2H2-P02-R3-A29.TextGrid
+	newFileName = argv[1]
+	newFileName = newFileName[-27:-9] + ".csv"
+	# e.g. sara_SC-S2H2-P02-R3-A29.TextGrid becomes SC-S2H2-P02-R3-A29.csv
+	print(newFileName)
+	#########
+
+	with open(newFileName, "w", newline="") as labelsCSV:
 		print("\n.csv opened for: " + labelsCSV.mode)
 		writer = csv.writer(labelsCSV)
 		writer.writerows(table)
