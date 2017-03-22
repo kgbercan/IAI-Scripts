@@ -96,7 +96,8 @@ def main():
 					pointType = points.search(current).group(1)
 					point = points.search(current).group(3)
 
-					if(currentTierType=="interval"):
+					#phonemes tier breaks these lines
+					if(currentTierType=="interval" and currentTierName!="phones"):
 						#store xmin
 						(tg[tgIndex].xmin).append(point)
 
@@ -114,8 +115,10 @@ def main():
 					i+=1
 					current = lines[i]
 					#get text
-					contentType = content.search(current).group(1)
-					text = content.search(current).group(2)
+					#phonemes tier breaks these lines
+					if(currentTierName!="phones"):
+						contentType = content.search(current).group(1)
+						text = content.search(current).group(2)
 
 					#add word, tone, break or misc to csv
 					if(currentTierName=="words"):
@@ -152,10 +155,13 @@ def main():
 				for j in range(len(table[0])):
 					table[i+1].append("")
 					if(j==0):
+						print(tg[1].xmin[i])
 						table[i+1][j] = tg[1].xmin[i]
 					elif(j==1):
+						print(tg[1].xmax[i])
 						table[i+1][j] = tg[1].xmax[i]
 					elif(j==2):
+						print(tg[1].words[i])
 						table[i+1][j] = tg[1].words[i]
 
 		### fill in each person's annotations
